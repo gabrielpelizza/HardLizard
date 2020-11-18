@@ -3,7 +3,16 @@ let homePage = require('./homePage')
 let preguntasFrecuentes = require('./preguntasFrecuentes')
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
+<<<<<<< HEAD
 let salas = sucursales.leerJSON()
+=======
+let enCartelera = require('./enCartelera')
+let cartelera = enCartelera.leerJSON()
+//let contactanos = require("./contacto")
+//let contactoP = contactanos.leerJSON()
+
+//let salas = sucursales.leerJSON()
+>>>>>>> a0d0e3022de2a0091f08c06ccb1bd881c1d84f14
 
 
 module.exports = {
@@ -33,16 +42,40 @@ module.exports = {
         
     },
     enCartelera : function(req,res){
+<<<<<<< HEAD
         res.write
         
+=======
+        res.write("En cartelera")
+        res.write(`Total de películas en cartelera: ${cartelera.total_movies} \n \n`)
+        cartelera.movies.forEach(movie => {
+            res.write('Titulo: ' + movie.title +'\n' + 'Reseña: ' + movie.overview + '\n\n')
+        });
+>>>>>>> a0d0e3022de2a0091f08c06ccb1bd881c1d84f14
     },
 
 
     sucursales : function(req,res){
+
+        let theaters=[];
+        
         res.write(`Nuestras Salas.`)
         res.write(`Total de salas: ${salas.total_theaters} \n`)
+        res.write(`Nombre ${theaters.name}\n`)
+        res.write(`Dirección ${theaters.addres}\n`)
+        res.write(`Descripción ${theaters.description}\n`)
+
+
+
         res.end()
-    },
+    }
+    //,
+    //ontacto : function(req,res){
+    //   contactoP.contacto.forEach(cont =>{
+    //       res.write(`${cont.titulo}`)
+    //   })
+    //   
+    //
 
     faqs : function(req,res){
         res.write('Preguntas frecuentes \n')
