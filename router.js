@@ -10,7 +10,7 @@ module.exports = function(req,res){
             index.enCartelera(req,res)
             break;
         case '/mas-votadas' :
-            //masVotadas
+            index.masVotadas(req,res)
             break;
         case '/sucursales' :
             index.sucursales(req,res)

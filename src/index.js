@@ -48,6 +48,29 @@ module.exports = {
         res.end()
     },
 
+    masVotadas : function(req,res) {
+        
+        let votadas = movies.movies.filter((movie) => movie.vote_average >= 7);
+        res.write(`MAS VOTADAS. \n \n`);
+        res.write(`Total de PELICULAS: ${votadas.length}\n \n`);
+
+        let total = 0;
+        votadas.forEach((movie) => total= total + movie.vote_average);
+        let promedio = total/votadas.length;
+
+        res.write(`Rating promedio: ${promedio}\n\n`);
+        res.write(`Listado de PELICULAS: \n\n`);
+        
+        votadas.forEach(function(movie){
+            
+            res.write(`→ ${movie.title.toUpperCase()}\n\n`);
+            res.write(`Rating: ${movie.vote_average} \n\n`);
+            res.write(`Reseña: ${movie.overview}\n\n`)
+        });
+        res.end();
+        
+    },
+
 
 
 }
