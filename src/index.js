@@ -1,7 +1,9 @@
+const { read } = require('fs')
 let homePage = require('./homePage')
+let preguntasFrecuentes = require('./preguntasFrecuentes')
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
-//let salas = sucursales.leerJSON()
+let salas = sucursales.leerJSON()
 
 
 module.exports = {
@@ -32,6 +34,7 @@ module.exports = {
     },
     enCartelera : function(req,res){
         res.write
+        
     },
 
 
@@ -41,6 +44,11 @@ module.exports = {
         res.end()
     },
 
-
+    faqs : function(req,res){
+        res.write('Preguntas frecuentes \n')
+        res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n\n')
+        res.write(`Total de preguntas:  `)
+        res.end()
+    } 
 
 }
