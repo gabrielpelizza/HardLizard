@@ -96,6 +96,7 @@ module.exports = {
     },
 
     preguntasfrecuentes : function(req,res){
+        res.write("Preguntas frecuentes\n\n")
         preguntasjson.faqs.forEach(pf =>{
             res.write(`${pf.faq_title}\n`)
             res.write(`${pf.faq_answer}\n\n\n`)
