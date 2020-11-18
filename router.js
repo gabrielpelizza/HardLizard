@@ -13,13 +13,13 @@ module.exports = function(req,res){
             //masVotadas
             break;
         case '/sucursales' :
-            //sucursales
+            index.sucursales(req,res)
             break;
         case '/contacto' :
             //contacto
             break;
-        case 'preguntas-frecuentes' :
-            //preguntasFrecuentes
+        case '/preguntas-frecuentes' :
+            //index.faq(req,res)
             break;
         default:
             res.end('Página no encontrada')
