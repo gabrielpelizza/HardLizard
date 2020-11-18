@@ -3,8 +3,8 @@ let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
 let enCartelera = require('./enCartelera')
 let cartelera = enCartelera.leerJSON()
-let contacto = require("./contacto")
-let contactanos = contacto.contacto()
+let contactanos = require("./contacto")
+
 //let salas = sucursales.leerJSON()
 
 
@@ -58,7 +58,8 @@ module.exports = {
         res.end()
     },
     contacto : function(req,res){
-        res.write(contactanos)
+        res.write(`${contactanos.contacto.titulo}`)
+        res.write(`${contactanos.contacto.contenido}`)
     }
 
 
