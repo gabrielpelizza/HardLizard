@@ -1,7 +1,7 @@
 const { read } = require('fs')
 let homePage = require('./homePage')
 let preguntasFrecuentes = require('./preguntasFrecuentes')
-let preguntas = preguntasFrecuentes.leerJSON()
+let preguntasjson = preguntasFrecuentes.leerJSON()
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
 let salas = sucursales.leerJSON()
@@ -93,8 +93,13 @@ module.exports = {
         res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬ \n\n')
         res.write('¿Tenés algo para contarnos? ☺\n Nos encanta escuchar a nuestros clientes. Si deseas contactarnos podés escribirnos al siguiente email: dhmovies@digitalhouse.com o en las redes sociales. Envianos tu consulta, sugerencia o reclamo y será respondido a la brevedad posible. Recordá que también podes consultar la sección de Preguntas Frecuentes para obtener respuestas inmediatas a los problemas más comunes.')
             res.end()
-    }
+    },
 
+    preguntasfrecuentes : function(req,res){
+        preguntasjson.faqs.forEach(pf =>{
+            res.write(`${pf.faq_title}\n`)
+            res.write(`${pf.faq_answer}\n\n\n`)
+        })
     }
 
   
@@ -106,4 +111,4 @@ module.exports = {
         res.write(`Pregunta: ${preguntas.faq_title}`)
         res.end()
     } */
-
+}
