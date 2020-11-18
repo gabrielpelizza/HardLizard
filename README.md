@@ -1,6 +1,7 @@
-# Grupo nro...
+# Grupo nro 5
 ## Trabajo: Hard Lizard
 ## Integrantes:
-- Fulano
-- Zutano
-- Mengano
+- Jeanette Garcia
+- Jonas Sayago
+- Ivan Rutz
+- Gabriel Pelizza
