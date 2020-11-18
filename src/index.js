@@ -16,9 +16,14 @@ module.exports = {
         orden.forEach(function(pelis){
             res.write(`► ${pelis} \n`)
         })
-        
+        res.write('\n')
+        res.write("Recordá que podés visitar las secciones:\n")
+        res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n')
+        res.write(" → En Cartelera \n → Más Votadas \n → Sucursales \n → Contacto \n → Preguntas Frecuentes")
 
-        res.end()
+        res.end();  
+
+        
     },
     enCartelera : function(req,res){
         res.write
