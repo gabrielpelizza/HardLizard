@@ -3,7 +3,8 @@ let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
 let enCartelera = require('./enCartelera')
 let cartelera = enCartelera.leerJSON()
-let contactanos = require("./contacto")
+//let contactanos = require("./contacto")
+//let contactoP = contactanos.leerJSON()
 
 //let salas = sucursales.leerJSON()
 
@@ -56,11 +57,14 @@ module.exports = {
 
 
         res.end()
-    },
-    contacto : function(req,res){
-        res.write(`${contactanos.contacto.titulo}`)
-        res.write(`${contactanos.contacto.contenido}`)
     }
+    //,
+    //ontacto : function(req,res){
+    //   contactoP.contacto.forEach(cont =>{
+    //       res.write(`${cont.titulo}`)
+    //   })
+    //   
+    //
 
 
 
