@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { faqs } = require('.');
+//const { faqs } = require('.');
 
 module.exports = {
     bd : './data/faqs.json',

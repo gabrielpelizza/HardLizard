@@ -4,12 +4,12 @@ let preguntasFrecuentes = require('./preguntasFrecuentes')
 let preguntas = preguntasFrecuentes.leerJSON()
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
+let salas = sucursales.leerJSON()
 let enCartelera = require('./enCartelera')
 let cartelera = enCartelera.leerJSON()
-//let contactanos = require("./contacto")
-//let contactoP = contactanos.leerJSON()
 
-let salas = sucursales.leerJSON()
+
+//let salas = sucursales.leerJSON()
 
 
 module.exports = {
@@ -39,6 +39,8 @@ module.exports = {
         
     },
     enCartelera : function(req,res){
+        res.write
+        
         res.write("En cartelera")
         res.write(`Total de películas en cartelera: ${cartelera.total_movies} \n \n`)
         cartelera.movies.forEach(movie => {
@@ -61,22 +63,47 @@ module.exports = {
 
 
         res.end()
-    }
-    //,
-    //ontacto : function(req,res){
-    //   contactoP.contacto.forEach(cont =>{
-    //       res.write(`${cont.titulo}`)
-    //   })
-    //   
-    //
-,
-    faqs : function(req,res){
+    },
 
+    masVotadas : function(req,res) {
+        
+        let votadas = movies.movies.filter((movie) => movie.vote_average >= 7);
+        res.write(`MAS VOTADAS. \n \n`);
+        res.write(`Total de PELICULAS: ${votadas.length}\n \n`);
+
+        let total = 0;
+        votadas.forEach((movie) => total= total + movie.vote_average);
+        let promedio = total/votadas.length;
+
+        res.write(`Rating promedio: ${promedio}\n\n`);
+        res.write(`Listado de PELICULAS: \n\n`);
+        
+        votadas.forEach(function(movie){
+            
+            res.write(`→ ${movie.title.toUpperCase()}\n\n`);
+            res.write(`Rating: ${movie.vote_average} \n\n`);
+            res.write(`Reseña: ${movie.overview}\n\n`)
+        });
+        res.end();
+        
+    },
+
+    contacto : function(req,res){
+        res.write('Contáctanos. \n');
+        res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬ \n\n')
+        res.write('¿Tenés algo para contarnos? ☺\n Nos encanta escuchar a nuestros clientes. Si deseas contactarnos podés escribirnos al siguiente email: dhmovies@digitalhouse.com o en las redes sociales. Envianos tu consulta, sugerencia o reclamo y será respondido a la brevedad posible. Recordá que también podes consultar la sección de Preguntas Frecuentes para obtener respuestas inmediatas a los problemas más comunes.')
+            res.end()
+    }
+
+    }
+
+  
+
+    /*faqs : function(req,res){
         res.write('Preguntas frecuentes \n')
         res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n\n')
         res.write(`Total de preguntas: ${preguntas.total_faqs} \n\n `)
         res.write(`Pregunta: ${preguntas.faq_title}`)
         res.end()
-    } 
+    } */
 
-}
