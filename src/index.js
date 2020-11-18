@@ -1,7 +1,7 @@
 let homePage = require('./homePage')
 
 let movies = homePage.leerJSON()
-let salas = sucursales.leerJSON()
+//let salas = sucursales.leerJSON()
 
 module.exports = {
 
