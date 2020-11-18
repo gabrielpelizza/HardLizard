@@ -1,7 +1,7 @@
 let homePage = require('./homePage')
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
-//let salas = sucursales.leerJSON()
+let salas = sucursales.leerJSON()
 
 
 module.exports = {
@@ -36,6 +36,8 @@ module.exports = {
 
 
     sucursales : function(req,res){
+
+        let theaters=[];
         
         res.write(`Nuestras Salas.`)
         res.write(`Total de salas: ${salas.total_theaters} \n`)
