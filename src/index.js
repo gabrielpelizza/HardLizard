@@ -14,6 +14,24 @@ module.exports = {
         res.end()
     },
     enCartelera : function(req,res){
+        res.write
+    },
 
+    /*
+    Sucursales (/sucursales)
+a. Título: Nuestras Salas.
+b. Total de salas: (total de salas)
+c. Listados de salas. Para cada sala mostrar:
+i. Nombre (nombre de la sala)
+ii. Dirección (ubicación de la sala)
+iii. Descripción (descripción de la sala)
+
+    */
+
+    sucursales : function(req,res){
+        res.write(`Nuestras Salas.`)
+        res.write(`Total de salas: ${movies.total_theaters} \n`)
+        res.end()
     }
+
 }
