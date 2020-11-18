@@ -1,6 +1,14 @@
+const { read } = require('fs')
 let homePage = require('./homePage')
+let preguntasFrecuentes = require('./preguntasFrecuentes')
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
+let salas = sucursales.leerJSON()
+let enCartelera = require('./enCartelera')
+let cartelera = enCartelera.leerJSON()
+//let contactanos = require("./contacto")
+//let contactoP = contactanos.leerJSON()
+
 //let salas = sucursales.leerJSON()
 
 
@@ -32,10 +40,18 @@ module.exports = {
     },
     enCartelera : function(req,res){
         res.write
+        
+        res.write("En cartelera")
+        res.write(`Total de películas en cartelera: ${cartelera.total_movies} \n \n`)
+        cartelera.movies.forEach(movie => {
+            res.write('Titulo: ' + movie.title +'\n' + 'Reseña: ' + movie.overview + '\n\n')
+        });
     },
 
 
     sucursales : function(req,res){
+
+        let theaters=[];
         
         res.write(`Nuestras Salas.`)
         res.write(`Total de salas: ${salas.total_theaters} \n`)
@@ -71,6 +87,19 @@ module.exports = {
         
     },
 
+    }
+    //,
+    //ontacto : function(req,res){
+    //   contactoP.contacto.forEach(cont =>{
+    //       res.write(`${cont.titulo}`)
+    //   })
+    //   
+    //
 
+    /*faqs : function(req,res){
+        res.write('Preguntas frecuentes \n')
+        res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n\n')
+        res.write(`Total de preguntas:  `)
+        res.end()
+    } */
 
-}
