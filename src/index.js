@@ -1,18 +1,15 @@
 const { read } = require('fs')
 let homePage = require('./homePage')
 let preguntasFrecuentes = require('./preguntasFrecuentes')
+let preguntas = preguntasFrecuentes.leerJSON()
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
-<<<<<<< HEAD
-let salas = sucursales.leerJSON()
-=======
 let enCartelera = require('./enCartelera')
 let cartelera = enCartelera.leerJSON()
 //let contactanos = require("./contacto")
 //let contactoP = contactanos.leerJSON()
 
-//let salas = sucursales.leerJSON()
->>>>>>> a0d0e3022de2a0091f08c06ccb1bd881c1d84f14
+let salas = sucursales.leerJSON()
 
 
 module.exports = {
@@ -42,16 +39,12 @@ module.exports = {
         
     },
     enCartelera : function(req,res){
-<<<<<<< HEAD
-        res.write
-        
-=======
         res.write("En cartelera")
         res.write(`Total de películas en cartelera: ${cartelera.total_movies} \n \n`)
         cartelera.movies.forEach(movie => {
             res.write('Titulo: ' + movie.title +'\n' + 'Reseña: ' + movie.overview + '\n\n')
+            res.end()
         });
->>>>>>> a0d0e3022de2a0091f08c06ccb1bd881c1d84f14
     },
 
 
@@ -76,11 +69,13 @@ module.exports = {
     //   })
     //   
     //
-
+,
     faqs : function(req,res){
+
         res.write('Preguntas frecuentes \n')
         res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n\n')
-        res.write(`Total de preguntas:  `)
+        res.write(`Total de preguntas: ${preguntas.total_faqs} \n\n `)
+        res.write(`Pregunta: ${preguntas.faq_title}`)
         res.end()
     } 
 
