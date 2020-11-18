@@ -1,6 +1,7 @@
 const { read } = require('fs')
 let homePage = require('./homePage')
 let preguntasFrecuentes = require('./preguntasFrecuentes')
+let preguntasjson = preguntasFrecuentes.leerJSON()
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
 let salas = sucursales.leerJSON()
@@ -87,6 +88,11 @@ module.exports = {
         
     },
 
+    preguntasfrecuentes : function(req,res){
+        preguntasjson.faqs.forEach(pf =>{
+            res.write(`${pf.faq_title}\n`)
+            res.write(`${pf.faq_answer}\n\n\n`)
+        })
     }
     //,
     //ontacto : function(req,res){
@@ -102,4 +108,4 @@ module.exports = {
         res.write(`Total de preguntas:  `)
         res.end()
     } */
-
+}

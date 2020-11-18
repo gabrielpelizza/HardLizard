@@ -19,7 +19,7 @@ module.exports = function(req,res){
             //contacto
             break;
         case '/preguntas-frecuentes' :
-           index.faqs(req,res)
+           index.preguntasfrecuentes(req,res)
             break;
         default:
             res.end('Página no encontrada')
