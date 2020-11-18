@@ -2,6 +2,7 @@ let homePage = require('./homePage')
 let sucursales = require ('./sucursales')
 let movies = homePage.leerJSON()
 let enCartelera = require('./enCartelera')
+let cartelera = enCartelera.leerJSON()
 //let salas = sucursales.leerJSON()
 
 
@@ -33,9 +34,9 @@ module.exports = {
     },
     enCartelera : function(req,res){
         res.write("En cartelera")
-        res.write(`Total de películas en cartelera: ${enCartelera.total_movies} \n \n`)
-        enCartelera.movies.forEach(movie => {
-            res.push('Titulo: ' + enCartelera.title +'\n' + 'Reseña: ' + enCartelera.overview)
+        res.write(`Total de películas en cartelera: ${cartelera.total_movies} \n \n`)
+        cartelera.movies.forEach(movie => {
+            res.write('Titulo: ' + movie.title +'\n' + 'Reseña: ' + movie.overview + '\n\n')
         });
     },
 
