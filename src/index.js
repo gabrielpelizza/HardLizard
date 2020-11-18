@@ -3,6 +3,23 @@ let homePage = require('./homePage')
 let movies = homePage.leerJSON()
 
 module.exports = {
+
+    /*HomePage
+    a. Título: Bienvenidos a DH Movies el mejor sitio para encontrar las mejores
+películas, incluso mucho mejor que Netflix, Cuevana y PopCorn.
+b. Total de películas en cartelera: (total de películas)
+c. Listados de películas
+i. Mostrar el listado de películas organizadas alfabéticamente por
+título.
+
+d. Pié de página: Recordá que podés visitar las secciones:
+i. En Cartelera
+ii. Más Votadas
+iii. Sucursales
+iv. Contacto
+v. Preguntas Frecuentes
+*/
+
     homePage : function(req,res){
         res.write('Bienvenidos a DH  Movies el mejor sitio para encontrar las mejores peliculas, incluso mucho mejor que Netflix, Cuevana y PopCorn. \n\n')
         res.write(`Total de películas en cartelera: ${movies.total_movies} \n \n`)
