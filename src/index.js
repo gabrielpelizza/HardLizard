@@ -13,15 +13,12 @@ let cartelera = enCartelera.leerJSON()
 
 
 module.exports = {
-
-
-
     homePage : function(req,res){
         res.write('Bienvenidos a DH  Movies el mejor sitio para encontrar las mejores peliculas, incluso mucho mejor que Netflix, Cuevana y PopCorn. \n\n')
         res.write(`Total de películas en cartelera: ${movies.total_movies} \n \n`)
         res.write('Listado de películas \n \n')
        
-       let orden = []
+        let orden = []
         movies.movies.forEach(movie => {
             orden.push(movie.title +'\n')
         });
@@ -33,10 +30,7 @@ module.exports = {
         res.write("Recordá que podés visitar las secciones:\n")
         res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ \n')
         res.write(" → En Cartelera \n → Más Votadas \n → Sucursales \n → Contacto \n → Preguntas Frecuentes")
-
-        res.end();  
-
-        
+        res.end();      
     },
     enCartelera : function(req,res){
         res.write
@@ -48,25 +42,23 @@ module.exports = {
             res.end()
         });
     },
-
-
     sucursales : function(req,res){
-
-        let theaters=[];
-        
-        res.write(`Nuestras Salas.`)
-        res.write(`Total de salas: ${salas.total_theaters} \n`)
-        res.write(`Nombre ${theaters.name}\n`)
-        res.write(`Dirección ${theaters.addres}\n`)
-        res.write(`Descripción ${theaters.description}\n`)
-
-
-
+        //let theaters=[];
+        res.write(`Nuestras Salas.\n\n`)
+        res.write(`Total de salas: ${salas.total_theaters} \n\n`)
+        salas.theaters.forEach(descr=>{
+            res.write(`Nombre ${descr.name}\n`)
+            res.write(`Dirección ${descr.address}\n`)
+            res.write(`Descripción ${descr.description}\n\n`)
+        })
+        //res.write(`Nuestras Salas.`)
+        //res.write(`Total de salas: ${salas.total_theaters} \n`)
+        //res.write(`Nombre ${theaters.name}\n`)
+        //res.write(`Dirección ${theaters.addres}\n`)
+        //res.write(`Descripción ${theaters.description}\n`)
         res.end()
     },
-
     masVotadas : function(req,res) {
-        
         let votadas = movies.movies.filter((movie) => movie.vote_average >= 7);
         res.write(`MAS VOTADAS. \n \n`);
         res.write(`Total de PELICULAS: ${votadas.length}\n \n`);
@@ -79,22 +71,18 @@ module.exports = {
         res.write(`Listado de PELICULAS: \n\n`);
         
         votadas.forEach(function(movie){
-            
             res.write(`→ ${movie.title.toUpperCase()}\n\n`);
             res.write(`Rating: ${movie.vote_average} \n\n`);
             res.write(`Reseña: ${movie.overview}\n\n`)
         });
         res.end();
-        
     },
-
     contacto : function(req,res){
         res.write('Contáctanos. \n');
         res.write('▬▬▬▬▬▬▬▬▬▬▬▬▬ \n\n')
         res.write('¿Tenés algo para contarnos? ☺\n Nos encanta escuchar a nuestros clientes. Si deseas contactarnos podés escribirnos al siguiente email: dhmovies@digitalhouse.com o en las redes sociales. Envianos tu consulta, sugerencia o reclamo y será respondido a la brevedad posible. Recordá que también podes consultar la sección de Preguntas Frecuentes para obtener respuestas inmediatas a los problemas más comunes.')
             res.end()
     },
-
     preguntasfrecuentes : function(req,res){
         res.write("Preguntas frecuentes\n\n")
         preguntasjson.faqs.forEach(pf =>{
