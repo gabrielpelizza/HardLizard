@@ -35,8 +35,15 @@ module.exports = {
 
 
     sucursales : function(req,res){
+        
         res.write(`Nuestras Salas.`)
         res.write(`Total de salas: ${salas.total_theaters} \n`)
+        res.write(`Nombre ${theaters.name}\n`)
+        res.write(`Dirección ${theaters.addres}\n`)
+        res.write(`Descripción ${theaters.description}\n`)
+
+
+
         res.end()
     },
 
