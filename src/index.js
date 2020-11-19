@@ -88,8 +88,11 @@ module.exports = {
         preguntasjson.faqs.forEach(pf =>{
             res.write(`${pf.faq_title}\n`)
             res.write(`${pf.faq_answer}\n\n\n`)
+    
         })
+        res.end()
     }
+
 
   
 
