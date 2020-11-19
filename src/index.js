@@ -67,7 +67,7 @@ module.exports = {
         votadas.forEach((movie) => total= total + movie.vote_average);
         let promedio = total/votadas.length;
 
-        res.write(`Rating promedio: ${promedio}\n\n`);
+        res.write(`Rating promedio: ${promedio.toFixed(2)}\n\n`);
         res.write(`Listado de PELICULAS: \n\n`);
         
         votadas.forEach(function(movie){
