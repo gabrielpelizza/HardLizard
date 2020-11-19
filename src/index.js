@@ -35,21 +35,21 @@ module.exports = {
     enCartelera : function(req,res){
         res.write
         
-        res.write("En cartelera")
+        res.write("En cartelera\n\n")
         res.write(`Total de películas en cartelera: ${cartelera.total_movies} \n \n`)
         cartelera.movies.forEach(movie => {
-            res.write('Titulo: ' + movie.title +'\n' + 'Reseña: ' + movie.overview + '\n\n')
-            res.end()
+            res.write('→ Titulo: ' + movie.title +'\n' + 'Reseña: ' + movie.overview + '\n\n');
         });
+        res.end(); // movi el res.end(), estaba dentro del forEach; 
     },
     sucursales : function(req,res){
         //let theaters=[];
         res.write(`Nuestras Salas.\n\n`)
         res.write(`Total de salas: ${salas.total_theaters} \n\n`)
         salas.theaters.forEach(descr=>{
-            res.write(`Nombre ${descr.name}\n`)
-            res.write(`Dirección ${descr.address}\n`)
-            res.write(`Descripción ${descr.description}\n\n`)
+            res.write(`→ Nombre: ${descr.name}\n`)
+            res.write(`Dirección: ${descr.address}\n`)
+            res.write(`Descripción: ${descr.description}\n\n`)
         })
         //res.write(`Nuestras Salas.`)
         //res.write(`Total de salas: ${salas.total_theaters} \n`)
@@ -61,14 +61,14 @@ module.exports = {
     masVotadas : function(req,res) {
         let votadas = movies.movies.filter((movie) => movie.vote_average >= 7);
         res.write(`MAS VOTADAS. \n \n`);
-        res.write(`Total de PELICULAS: ${votadas.length}\n \n`);
+        res.write(`Total de Peliculas: ${votadas.length}\n \n`);
 
         let total = 0;
         votadas.forEach((movie) => total= total + movie.vote_average);
         let promedio = total/votadas.length;
 
         res.write(`Rating promedio: ${promedio.toFixed(2)}\n\n`);
-        res.write(`Listado de PELICULAS: \n\n`);
+        res.write(`LISTADO DE PELICULAS: \n\n`);
         
         votadas.forEach(function(movie){
             res.write(`→ ${movie.title.toUpperCase()}\n\n`);
